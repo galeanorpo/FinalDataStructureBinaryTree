@@ -55,6 +55,7 @@ public class App {
                                             break;
                                         case 2:
                                             arbol.imprimirPreorden(arbol.raiz);
+                                            //arbol.imprimirPreordenRecursivo(arbol.raiz);
                                             break;
                                         case 3:
                                             arbol.imprimirInorden(arbol.raiz);

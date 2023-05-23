@@ -24,13 +24,12 @@ public class ArbolBinario {
 
     public void insertarNodo(String i) {
         Nodo nodo = new Nodo(i);
-        Nodo actual = this.raiz;
-        if (actual == null) {
-            this.raiz = nodo;
+        if (raiz == null) {
+            raiz = nodo;
         } else {
-            while (actual != null) {
+            Nodo actual = raiz;
+            while (true) {
                 if (nodo.info.compareTo(actual.info) < 0) {
-                    actual = actual.derecha;
                     if (actual.izquierda == null) {
                         actual.izquierda = nodo;
                         break;
@@ -148,6 +147,14 @@ public class ArbolBinario {
             System.out.println();
         }
         System.out.println("Cantidad de nodos en el arbol: " + conteoNodos());
+    }
+
+    public void imprimirPreordenRecursivo(Nodo raiz) {
+        if (raiz != null) {
+            System.out.println(raiz.info);
+            imprimirPreordenRecursivo(raiz.izquierda);
+            imprimirPreordenRecursivo(raiz.derecha);
+        }
     }
 
     public void imprimirInorden(Nodo raiz) {
