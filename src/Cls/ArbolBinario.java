@@ -125,9 +125,8 @@ public class ArbolBinario {
         if (raiz != null) {
             imprimirPosorden(raiz.izquierda);
             imprimirPosorden(raiz.derecha);
-            System.out.println(raiz.info);
+            System.out.print(raiz.info + ", ");
         }
-        System.out.println("Cantidad de nodos en el arbol: " + conteoNodos());
     }
 
     public void imprimirPreorden(Nodo raiz) {
@@ -136,7 +135,7 @@ public class ArbolBinario {
             p.push(raiz);
             while (!p.isEmpty()) {
                 Nodo actual = p.pop();
-                System.out.println(actual.info + " ");
+                System.out.print(actual.info + ", ");
                 if (actual.derecha != null) {
                     p.push(actual.derecha);
                 }
@@ -146,7 +145,6 @@ public class ArbolBinario {
             }
             System.out.println();
         }
-        System.out.println("Cantidad de nodos en el arbol: " + conteoNodos());
     }
 
     public void imprimirPreordenRecursivo(Nodo raiz) {
@@ -160,10 +158,9 @@ public class ArbolBinario {
     public void imprimirInorden(Nodo raiz) {
         if (raiz != null) {
             imprimirInorden(raiz.izquierda);
-            System.out.println(raiz.info);
+            System.out.print(raiz.info + ", ");
             imprimirInorden(raiz.derecha);
         }
-        System.out.println("Cantidad de nodos en el arbol: " + conteoNodos());
     }
 
     public int conteoNodos() {
@@ -176,7 +173,7 @@ public class ArbolBinario {
             cola.insert(raiz);
             while (!cola.isEmpty()) {
                 Nodo n = cola.remove();
-                System.out.println(n.info + " ");
+                System.out.print(raiz.info);
                 if (n.izquierda != null) {
                     cola.insert(n.izquierda);
                 }
@@ -185,7 +182,6 @@ public class ArbolBinario {
                 }
             }
         }
-        System.out.println("Cantidad de nodos en el arbol: " + conteoNodos());
     }
 
     public void construirArbol(String expresion) {
@@ -213,28 +209,14 @@ public class ArbolBinario {
     }
 
     public void infijo(Nodo raiz) {
-        if (raiz == null) {
-            return;
-        }
-
-        Pila pila = new Pila();
-        Nodo actual = raiz;
-
-        while (!pila.isEmpty() || actual != null) {
-            while (actual != null) {
-                if (actual.izquierda != null || actual.derecha != null) {
-                    System.out.print("(");
-                }
-                pila.push(actual);
-                actual = actual.izquierda;
+        if (raiz != null) {
+            if (raiz.izquierda != null || raiz.izquierda != null) {
+                System.out.print("(");
             }
-
-            actual = pila.pop();
-            System.out.print(actual.info);
-
-            actual = actual.derecha;
-
-            if (actual != null || !pila.isEmpty()) {
+            infijo(raiz.izquierda);
+            System.out.print(raiz.info);
+            infijo(raiz.derecha);
+            if (raiz.izquierda != null || raiz.derecha != null) {
                 System.out.print(")");
             }
         }
